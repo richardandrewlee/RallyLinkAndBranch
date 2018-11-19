@@ -1,6 +1,6 @@
 {
 	"manifest_version" : 2,
-	"name"             : "IHG Chrome Tools",
+	"name"             : "Chrome Tools",
 	"version"          : "0.1",
 	"content_scripts"  : [{
         "matches" : ["https://rally1.rallydev.com/*"],
