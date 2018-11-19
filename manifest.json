@@ -1,0 +1,16 @@
+{
+	"manifest_version" : 2,
+	"name"             : "IHG Chrome Tools",
+	"version"          : "0.1",
+	"content_scripts"  : [{
+        "matches" : ["https://rally1.rallydev.com/*"],
+        "js"      : ["jquery-3.2.1.min.js","jquery-ui.min.js","content.js"],
+        "css"     : ["jquery-ui.min.css"]
+    }],
+    "browser_action"   : {
+        "default_icon" : "icon.png"
+    },
+    "background"       : {
+        "scripts" : ["background.js"]
+    }
+}
