@@ -1,6 +1,6 @@
 {
 	"manifest_version" : 2,
-	"name"             : "Chrome Tools",
+	"name"             : "Rally Link and Branch",
 	"version"          : "0.1",
 	"content_scripts"  : [{
         "matches" : ["https://rally1.rallydev.com/*"],
