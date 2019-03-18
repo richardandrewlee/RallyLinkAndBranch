@@ -8,7 +8,7 @@ chrome.runtime.onMessage.addListener(
 
 function showValues() {
     let data    = generateInputValues()
-    let newHtml = generateHTML(data[0],data[1])
+    let newHtml = generateHTML(data[0],data[1], data[2])
     presentDialogue(newHtml)
 }
 
@@ -27,17 +27,21 @@ function generateInputValues(){
     let formattedDescription = formatDescription(description)
     
     let Link             = '['+number+']('+url+') : '+description
+    let anchor           = '<a href="'+url+'" target="_blank" style="font-size:14px;">'+number+' : '+description+'</a>'
     let gitHubBranchName = number+'_'+formattedDescription
     
-    return [Link, gitHubBranchName]
+    return [Link, gitHubBranchName, anchor]
 }
 
-function generateHTML(Link, gitHubBranchName){
-    return 'Link: <input style="display:block; width:100%" value="'+Link+'"/> <br />Branch Name: <input style="display:block; width:100%"  value="'+gitHubBranchName+'"/>'
+function generateHTML(Link, gitHubBranchName, anchor){
+    let link = 'Links: <input style="display:block; width:100%" value="'+Link+'"/> <br />'
+    let branch = 'Branch Name: <input style="display:block; width:100%"  value="'+gitHubBranchName+'"/>'
+    let anchortag = '<br/>' + anchor
+    return link + branch + anchortag
 }
 
 function storyNumberContainer() {
-    return $('div').filter(function(){
+    return $("[id^=component]").filter(function(){
         if ($(this).text().length < 10) {
             let DE = $(this).text().substring(0,2) == "DE"
             let US = $(this).text().substring(0,2) == "US"
