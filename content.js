@@ -23,7 +23,7 @@ function generateInputValues(){
     let url                  = window.location
     let numberDiv            = storyNumberContainer()
     let number               = numberDiv.text()
-    let description          = descriptionValue(numberDiv)
+    let description          = descriptionValue()
     let formattedDescription = formatDescription(description)
     
     let Link             = '['+number+']('+url+') : '+description
@@ -41,7 +41,8 @@ function generateHTML(Link, gitHubBranchName, anchor){
 }
 
 function storyNumberContainer() {
-    return $("[id^=component]").filter(function(){
+
+    return $(".chr-QuickDetailFormattedId-panelTitle").filter(function(){
         if ($(this).text().length < 10) {
             let DE = $(this).text().substring(0,2) == "DE"
             let US = $(this).text().substring(0,2) == "US"
@@ -60,6 +61,6 @@ function formatDescription(description){
     return description.replace(/&/, "And").replace(/[^a-z0-9]/gmi, "_").replace(/_+/g, "_")
 }
 
-function descriptionValue(div) {
-    return div.first().next("h1").find("input").val().replace(/"/g, "")
+function descriptionValue() {
+    return $(".chr-QuickDetailEntityHeader-middleContainer .smb-TextInput-renderedTextContainer .smb-TextInput-renderedText").text().replace(/"/g, "")
 }
